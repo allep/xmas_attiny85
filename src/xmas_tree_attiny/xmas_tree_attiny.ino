@@ -40,7 +40,7 @@
  */
 #define INTERRUPT_INDEX_FOR_PIN2 0
 #define BUTTON_PIN               2
-#define LED_PIN                  1
+#define LED_PIN                  0
 
 #define LOOP_DELAY_MS            500
 #define FADE_DELAY_MS            5
@@ -50,7 +50,7 @@
 #define BLINK_FAST_AND_SLOW_FAST_MS 100
 #define BLINK_FAST_AND_SLOW_SLOW_MS 400
 
-#define NUMBER_OF_STATES         5
+#define NUMBER_OF_STATES         6
 
 //---------------------------------------------------------------------------------------------
 // Globals
@@ -94,6 +94,11 @@ void loop()
     case 4:
     {
       state_blink_fast_and_slow();
+      break;
+    }
+    case 5:
+    {
+      state_off();
       break;
     }
   }
@@ -161,4 +166,11 @@ void state_blink_fast_and_slow()
     digitalWrite(LED_PIN, LOW);
     delay(BLINK_FAST_AND_SLOW_SLOW_MS);
   }
+}
+
+//---------------------------------------------------------------------------------------------
+void state_off()
+{
+  digitalWrite(LED_PIN, LOW);
+  delay(LOOP_DELAY_MS);
 }
